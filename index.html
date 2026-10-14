@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rita’s Spooky Fortune</title>
+  <meta name="description" content="A tiny Halloween fortune-teller: tap the crystal orb, open a spooky door, get candy (maybe).">
+  <meta name="theme-color" content="#1A1424">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex">
+
+  <!-- Open Graph: превью ссылки в мессенджерах -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rita’s Spooky Fortune 🎃">
+  <meta property="og:description" content="The orb knows things. Mostly about grammar and Dubai. Tap to find out.">
+  <meta property="og:url" content="https://zab1yak.github.io/ritas-spooky-fortune/">
+  <meta property="og:image" content="https://zab1yak.github.io/ritas-spooky-fortune/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A glowing jack-o’-lantern and the title Rita’s Spooky Fortune on a dark purple background">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%83%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Creepster&family=Nunito:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ===== Общие SVG-заготовки ===== -->
+  <svg class="sr-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- Туман: шум feTurbulence, размытый и подкрашенный в лиловый -->
+      <filter id="fog" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.02" numOctaves="3" seed="7"/>
+        <feColorMatrix values="0 0 0 0 0.62  0 0 0 0 0.52  0 0 0 0 0.78  0 0 0 -1.15 0.72"/>
+        <feGaussianBlur stdDeviation="6"/>
+      </filter>
+      <!-- Летучая мышь -->
+      <symbol id="bat" viewBox="0 0 120 60">
+        <path class="bat-wing bat-wing--l" d="M60 30 C50 18 38 10 18 8 C24 14 24 20 20 26 C14 24 8 26 2 32 C14 32 22 36 26 44 C32 38 42 36 52 40 Z"/>
+        <path class="bat-wing bat-wing--r" d="M60 30 C70 18 82 10 102 8 C96 14 96 20 100 26 C106 24 112 26 118 32 C106 32 98 36 94 44 C88 38 78 36 68 40 Z"/>
+        <path d="M60 22 L55 14 L57 24 C52 28 52 38 60 44 C68 38 68 28 63 24 L65 14 Z"/>
+      </symbol>
+      <!-- Конфета -->
+      <symbol id="candy" viewBox="0 0 200 120">
+        <path d="M52 60 L8 28 Q2 60 8 92 Z" fill="#FFD98E"/>
+        <path d="M148 60 L192 28 Q198 60 192 92 Z" fill="#FFD98E"/>
+        <ellipse cx="100" cy="60" rx="52" ry="40" fill="#FF8A3D"/>
+        <path d="M68 30 Q100 60 76 94 M100 20 Q128 60 100 100 M132 30 Q104 60 124 94" stroke="#FFD98E" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <ellipse cx="82" cy="40" rx="14" ry="7" fill="#FFF3DA" opacity=".55"/>
+      </symbol>
+      <!-- Тыква-ворчун -->
+      <symbol id="grumpy" viewBox="0 0 200 180">
+        <path d="M100 38 C96 22 104 10 116 4" stroke="#5B6B3A" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <ellipse cx="62" cy="104" rx="50" ry="64" fill="#E8742A"/>
+        <ellipse cx="138" cy="104" rx="50" ry="64" fill="#E8742A"/>
+        <ellipse cx="100" cy="104" rx="52" ry="70" fill="#FF8A3D"/>
+        <path d="M54 66 L86 80 M146 66 L114 80" stroke="#2A1F3A" stroke-width="8" stroke-linecap="round"/>
+        <path d="M60 88 L84 92 L72 108 Z M140 88 L116 92 L128 108 Z" fill="#2A1F3A"/>
+        <path d="M66 142 Q100 120 134 142" stroke="#2A1F3A" stroke-width="9" fill="none" stroke-linecap="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== Фон: луна, звёзды, замок, туман, мыши ===== -->
+  <div class="sky" aria-hidden="true">
+    <div class="moon"></div>
+    <div class="stars"></div>
+    <img class="castle" src="assets/castle.png" alt="" width="392" height="700" decoding="async">
+    <img class="web" src="assets/spiderweb.png" alt="" width="520" height="499" decoding="async">
+    <div class="bats">
+      <svg class="bat bat--1"><use href="#bat"/></svg>
+      <svg class="bat bat--2"><use href="#bat"/></svg>
+      <svg class="bat bat--3"><use href="#bat"/></svg>
+      <svg class="bat bat--4"><use href="#bat"/></svg>
+      <svg class="bat bat--5"><use href="#bat"/></svg>
+    </div>
+    <svg class="fog fog--back" preserveAspectRatio="none"><rect width="100%" height="100%" filter="url(#fog)"/></svg>
+    <svg class="fog fog--front" preserveAspectRatio="none"><rect width="100%" height="100%" filter="url(#fog)"/></svg>
+  </div>
+
+  <main class="page">
+    <!-- ===== ЗАДАЧА 1: шапка ===== -->
+    <header class="hero">
+      <h1 class="title" data-text="title">Rita’s Spooky Fortune</h1>
+      <p class="intro" data-text="intro">The orb knows things. Mostly about grammar and Dubai.</p>
+    </header>
+
+    <!-- ===== ЗАДАЧА 2: шар и гадание ===== -->
+    <section class="fortune" aria-labelledby="orb-hint">
+      <div class="altar">
+        <div class="candle candle--l" aria-hidden="true"><span class="flame"></span></div>
+
+        <button class="orb" type="button" data-label="orbLabel" aria-label="Crystal ball. Tap to get your fortune">
+          <svg viewBox="0 0 220 240" aria-hidden="true">
+            <defs>
+              <radialGradient id="orb-fill" cx="42%" cy="36%" r="70%">
+                <stop offset="0" stop-color="#FFF3DA"/>
+                <stop offset=".22" stop-color="#FFD98E"/>
+                <stop offset=".55" stop-color="#8B6BB1"/>
+                <stop offset="1" stop-color="#2A1F3A"/>
+              </radialGradient>
+              <radialGradient id="orb-mist" cx="50%" cy="55%" r="50%">
+                <stop offset="0" stop-color="#FF8A3D" stop-opacity=".55"/>
+                <stop offset="1" stop-color="#FF8A3D" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="orb-stand" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="#4A3566"/>
+                <stop offset="1" stop-color="#1F1730"/>
+              </linearGradient>
+              <clipPath id="orb-clip"><circle cx="110" cy="100" r="86"/></clipPath>
+            </defs>
+            <path d="M44 236 L62 182 H158 L176 236 Z" fill="url(#orb-stand)"/>
+            <path d="M56 186 Q110 204 164 186" stroke="#FF8A3D" stroke-width="3" fill="none" opacity=".7"/>
+            <circle cx="110" cy="100" r="86" fill="url(#orb-fill)"/>
+            <g clip-path="url(#orb-clip)">
+              <g class="orb-swirl">
+                <path d="M40 120 C70 70 130 150 180 90" stroke="#FFF3DA" stroke-width="10" fill="none" opacity=".25" stroke-linecap="round"/>
+                <path d="M50 70 C90 110 120 40 170 130" stroke="#FFD98E" stroke-width="6" fill="none" opacity=".3" stroke-linecap="round"/>
+              </g>
+              <circle class="orb-mist" cx="110" cy="112" r="70" fill="url(#orb-mist)"/>
+            </g>
+            <ellipse cx="78" cy="58" rx="26" ry="14" fill="#fff" opacity=".45" transform="rotate(-30 78 58)"/>
+            <circle cx="148" cy="140" r="5" fill="#fff" opacity=".35"/>
+          </svg>
+        </button>
+
+        <div class="candle candle--r" aria-hidden="true"><span class="flame"></span></div>
+        <div class="smoke" aria-hidden="true"></div>
+      </div>
+
+      <p class="subtitle" id="orb-hint" data-text="subtitle">Tap the orb</p>
+      <p class="status" role="status" aria-live="polite"></p>
+
+      <div class="card" hidden>
+        <div class="card__inner">
+          <div class="card__face card__back" aria-hidden="true">
+            <span class="card__sigil">✦</span>
+          </div>
+          <div class="card__face card__front">
+            <p class="card__label" data-text="cardTitle">Your fortune</p>
+            <p class="card__text"></p>
+            <p class="card__joke"></p>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn--ghost ask-again" type="button" data-text="askAgain" hidden>Ask again</button>
+    </section>
+
+    <!-- ===== ЗАДАЧА 3: мини-игра ===== -->
+    <section class="game" aria-labelledby="game-title">
+      <img class="game__witch" src="assets/witch.png" data-alt="witch" alt="A cute little witch in a big hat" width="398" height="495" loading="lazy" decoding="async">
+      <h2 class="section-title" id="game-title" data-text="game.title">Trick or Treat</h2>
+      <p class="game__hint" data-text="game.hint">Three doors. One hides candy. Choose wisely.</p>
+
+      <div class="doors"></div>
+      <template id="door-tpl">
+        <button class="door" type="button">
+          <span class="door__prize"></span>
+          <svg class="door__panel" viewBox="0 0 120 180" aria-hidden="true">
+            <path d="M6 180 V60 A54 54 0 0 1 114 60 V180 Z" fill="#4A3566"/>
+            <path d="M16 172 V62 A44 44 0 0 1 104 62 V172 Z" fill="#5C4380"/>
+            <path d="M60 18 V172 M16 100 H104" stroke="#3B2A52" stroke-width="4"/>
+            <circle cx="94" cy="112" r="6" fill="#FFD98E"/>
+            <text class="door__num" x="60" y="80" text-anchor="middle"></text>
+          </svg>
+        </button>
+      </template>
+
+      <p class="reaction" role="status" aria-live="polite"></p>
+      <button class="btn btn--ghost play-again" type="button" data-text="game.playAgain" hidden>Play again</button>
+    </section>
+
+    <footer class="footer">
+      <img class="footer__boo" src="assets/boo.png" data-alt="boo" alt="Boo!" width="317" height="520" loading="lazy" decoding="async">
+      <img class="footer__border" src="assets/pumpkin-border.png" data-alt="border" alt="A row of glowing jack-o’-lanterns" width="640" height="434" loading="lazy" decoding="async">
+      <p data-text="footer">Made with pumpkins and questionable grammar</p>
+    </footer>
+  </main>
+
+  <!-- ===== ЗАДАЧА 4: финал ===== -->
+  <button class="finale-btn" type="button" data-text="finale.button" aria-haspopup="dialog">One more thing</button>
+
+  <dialog class="finale" aria-labelledby="finale-greeting">
+    <svg class="dubai" viewBox="0 0 400 170" role="img" data-label="alt.dubai" aria-label="The Dubai skyline at sunset with a tiny pumpkin on a sand dune">
+      <defs>
+        <linearGradient id="dusk" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="#2A1F3A"/>
+          <stop offset=".65" stop-color="#8B6BB1"/>
+          <stop offset="1" stop-color="#FF8A3D"/>
+        </linearGradient>
+      </defs>
+      <rect width="400" height="170" fill="url(#dusk)"/>
+      <circle cx="300" cy="118" r="30" fill="#FFD98E" opacity=".9"/>
+      <g fill="#1A1424">
+        <!-- Бурдж-Халифа -->
+        <path d="M196 2 L198 40 L202 40 L204 72 L210 72 L212 100 L218 100 L220 140 H174 L176 112 L182 112 L184 84 L190 84 L192 46 L194 46 Z"/>
+        <!-- Бурдж-аль-Араб -->
+        <path d="M66 140 V58 L70 54 V140 Z M70 60 Q112 84 108 140 H70 Z"/>
+        <!-- прочие башни -->
+        <rect x="128" y="96" width="16" height="44"/><rect x="148" y="80" width="14" height="60"/>
+        <rect x="232" y="88" width="18" height="52"/><rect x="254" y="104" width="12" height="36"/>
+        <rect x="330" y="98" width="20" height="42"/><path d="M356 140 V92 L366 82 L376 92 V140 Z"/>
+        <rect x="20" y="110" width="22" height="30"/>
+      </g>
+      <path d="M0 150 Q80 128 170 146 T400 140 V170 H0 Z" fill="#C98A4B"/>
+      <path d="M0 162 Q120 146 240 160 T400 156 V170 H0 Z" fill="#A86D36"/>
+      <!-- тыква в очках на бархане -->
+      <g transform="translate(290 128)">
+        <ellipse cx="0" cy="10" rx="14" ry="11" fill="#FF8A3D"/>
+        <path d="M0 0 Q2 -6 6 -8" stroke="#5B6B3A" stroke-width="3" fill="none"/>
+        <rect x="-10" y="5" width="8" height="5" rx="2" fill="#1A1424"/><rect x="2" y="5" width="8" height="5" rx="2" fill="#1A1424"/>
+        <path d="M-2 7 H2" stroke="#1A1424" stroke-width="1.5"/>
+        <path d="M-5 15 Q0 18 5 15" stroke="#1A1424" stroke-width="1.5" fill="none"/>
+      </g>
+    </svg>
+    <div class="finale__body">
+      <h2 class="finale__greeting" id="finale-greeting" data-text="finale.greeting">Dear Rita,</h2>
+      <div class="finale__message"></div>
+      <p class="finale__signature" data-text="finale.signature">— your student</p>
+      <img class="finale__ghost" src="assets/ghost.png" data-alt="ghost" alt="A friendly ghost holding a pumpkin bucket" width="330" height="453" loading="lazy" decoding="async">
+      <button class="btn finale__close" type="button" data-text="finale.close">Close</button>
+    </div>
+  </dialog>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
