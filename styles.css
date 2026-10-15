@@ -102,7 +102,7 @@ button { font: inherit; color: inherit; }
 .page {
   position: relative; z-index: 1;
   max-width: 680px; margin: 0 auto;
-  padding: max(28px, env(safe-area-inset-top)) 16px calc(96px + env(safe-area-inset-bottom));
+  padding: max(28px, env(safe-area-inset-top)) 16px 0;
   display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 
@@ -303,7 +303,16 @@ button { font: inherit; color: inherit; }
 /* ===== Подвал ===== */
 .footer { position: relative; width: 100%; margin-top: 3rem; color: var(--ink-soft); font-size: .9rem; }
 .footer__boo { position: absolute; left: 4px; top: -40px; width: 70px; transform: rotate(-8deg); animation: bob 5s ease-in-out infinite; }
-.footer__border { display: block; width: min(100%, 560px); margin: 0 auto; }
+/* Полоса с тыквами: во всю ширину экрана, верх растворяется в фоне */
+.pumpkin-border {
+  position: relative; z-index: 1;
+  display: block; width: 100%; max-width: none;
+  height: clamp(240px, 42vw, 560px);
+  margin-top: -40px;
+  object-fit: cover; object-position: center bottom;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%);
+  mask-image: linear-gradient(to bottom, transparent, #000 22%);
+}
 .footer p { margin: .4rem 0 0; }
 
 /* ===== Финал ===== */

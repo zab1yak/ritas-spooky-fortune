@@ -97,14 +97,14 @@ window.CONTENT = {
   /* --- Финал: кнопка в углу и карточка --- */
   finale: {
     button: "One more thing",
-    greeting: "Dear Rita,",
-    // ЗАГОТОВКА — перепиши своими словами. Каждая строка массива — отдельный абзац.
+    greeting: "Rita, you’re the boss!",
+    // Каждая строка массива — отдельный абзац.
     message: [
-      "Thank you for all the lessons, the patience, and for not running away the day I said “I am agree”.",
+      "I really value your time and the way you run our lessons. You’re awesome, fun and very pretty.",
+      "When you move to Dubai, feel free to take me with you — or I’ll take you myself. We’ll go shopping (and not only shopping), and while you teach your lessons, camels will be strolling past in the background.",
       "Happy Halloween!",
-      "A warning from the orb: when you move to Dubai, the lessons don’t stop. You’ll just have to teach from the desert — with a camel photobombing every call.",
     ],
-    signature: "— your student",
+    signature: "With love, Denis",
     close: "Close",
   },
 
@@ -114,7 +114,7 @@ window.CONTENT = {
     witch: "A cute little witch in a big hat",
     ghost: "A friendly ghost holding a pumpkin bucket",
     boo: "Boo!",
-    dubai: "The Dubai skyline at sunset with a tiny pumpkin on a sand dune",
+    dubai: "The Dubai skyline at sunset",
   },
 
   footer: "Made with pumpkins and questionable grammar",

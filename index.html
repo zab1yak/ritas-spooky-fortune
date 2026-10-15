@@ -174,16 +174,18 @@
 
     <footer class="footer">
       <img class="footer__boo" src="assets/boo.png" data-alt="boo" alt="Boo!" width="317" height="520" loading="lazy" decoding="async">
-      <img class="footer__border" src="assets/pumpkin-border.png" data-alt="border" alt="A row of glowing jack-o’-lanterns" width="640" height="434" loading="lazy" decoding="async">
       <p data-text="footer">Made with pumpkins and questionable grammar</p>
     </footer>
   </main>
+
+  <!-- Полоса с тыквами во всю ширину экрана, прижата к низу страницы -->
+  <img class="pumpkin-border" src="assets/pumpkin-border.png" data-alt="border" alt="A row of glowing jack-o’-lanterns" width="640" height="434" loading="lazy" decoding="async">
 
   <!-- ===== ЗАДАЧА 4: финал ===== -->
   <button class="finale-btn" type="button" data-text="finale.button" aria-haspopup="dialog">One more thing</button>
 
   <dialog class="finale" aria-labelledby="finale-greeting">
-    <svg class="dubai" viewBox="0 0 400 170" role="img" data-label="alt.dubai" aria-label="The Dubai skyline at sunset with a tiny pumpkin on a sand dune">
+    <svg class="dubai" viewBox="0 0 400 170" role="img" data-label="alt.dubai" aria-label="The Dubai skyline at sunset">
       <defs>
         <linearGradient id="dusk" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0" stop-color="#2A1F3A"/>
@@ -206,14 +208,6 @@
       </g>
       <path d="M0 150 Q80 128 170 146 T400 140 V170 H0 Z" fill="#C98A4B"/>
       <path d="M0 162 Q120 146 240 160 T400 156 V170 H0 Z" fill="#A86D36"/>
-      <!-- тыква в очках на бархане -->
-      <g transform="translate(290 128)">
-        <ellipse cx="0" cy="10" rx="14" ry="11" fill="#FF8A3D"/>
-        <path d="M0 0 Q2 -6 6 -8" stroke="#5B6B3A" stroke-width="3" fill="none"/>
-        <rect x="-10" y="5" width="8" height="5" rx="2" fill="#1A1424"/><rect x="2" y="5" width="8" height="5" rx="2" fill="#1A1424"/>
-        <path d="M-2 7 H2" stroke="#1A1424" stroke-width="1.5"/>
-        <path d="M-5 15 Q0 18 5 15" stroke="#1A1424" stroke-width="1.5" fill="none"/>
-      </g>
     </svg>
     <div class="finale__body">
       <h2 class="finale__greeting" id="finale-greeting" data-text="finale.greeting">Dear Rita,</h2>
