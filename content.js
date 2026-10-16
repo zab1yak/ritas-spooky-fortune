@@ -65,6 +65,8 @@ window.CONTENT = {
       joke: "Upgrade: yogurt, a good series, then bed." },
     { text: "May every weekend start on Monday.",
       joke: "And last until Sunday." },
+    { text: "The red Audi you’ve been dreaming of is already on its way to you.",
+      joke: "Parking spot reserved: right under the Burj Khalifa." },
   ],
 
   /* --- Мини-игра «Trick or Treat» --- */
